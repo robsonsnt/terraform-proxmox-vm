@@ -25,9 +25,9 @@ resource "proxmox_vm_qemu" "vm" {
   full_clone = var.full_clone
   vm_state   = var.vm_state
   os_type    = var.os_type
-  cores      = var.cores
-  sockets    = var.sockets
-  memory     = var.memory
+  cores      = var.cores[count.index]
+  sockets    = var.sockets[count.index]
+  memory     = var.memory[count.index]
   scsihw     = var.scsihw
 
   # Cloud-init configuration
@@ -48,7 +48,7 @@ resource "proxmox_vm_qemu" "vm" {
           discard    = var.discard
           emulatessd = var.emulatessd
           replicate  = var.replicate
-          size       = var.disk_size
+          size         = "${var.disk_size[count.index]}"
           storage    = var.disk_storage
         }
       }
