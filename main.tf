@@ -2,7 +2,7 @@ terraform {
   required_providers {
     proxmox = {
       source  = "Telmate/proxmox"
-      version = "3.0.1-rc1"
+      version = "3.0.1-rc3"
     }
   }
 }
@@ -37,9 +37,15 @@ resource "proxmox_vm_qemu" "vm" {
   ciuser                  = var.ciuser
   cipassword              = var.cipassword
   sshkeys                 = var.sshkeys
-  cloudinit_cdrom_storage = var.cloudinit_cdrom_storage
 
   disks {
+    ide {
+      ide0 {
+        cloudinit {
+          storage = var.cloudinit_cdrom_storage
+        }
+      }
+    }
     scsi {
       scsi0 {
         disk {
