@@ -37,9 +37,15 @@ resource "proxmox_vm_qemu" "vm" {
   ciuser                  = var.ciuser
   cipassword              = var.cipassword
   sshkeys                 = var.sshkeys
-  cloudinit_cdrom_storage = var.cloudinit_cdrom_storage
 
   disks {
+    ide {
+      ide0 {
+        cloudinit {
+          storage = var.cloudinit_cdrom_storage
+        }
+      }
+    }
     scsi {
       scsi0 {
         disk {
