@@ -54,18 +54,21 @@ variable "os_type" {
 }
 
 variable "cores" {
-  description = "Number of cores"
-  default     = 1
+  description = "List of number of cores for each VM"
+  type        = list(number)
+  default     = [1]
 }
 
 variable "sockets" {
-  description = "Number of sockets"
-  default     = 1
+  description = "List of number of sockets for each VM"
+  type        = list(number)
+  default     = [1]
 }
 
 variable "memory" {
-  description = "Memory in MB"
-  default     = 1024
+  description = "List of memory sizes in MB for each VM"
+  type        = list(number)
+  default     = [1024]
 }
 
 variable "scsihw" {
@@ -123,8 +126,9 @@ variable "replicate" {
 }
 
 variable "disk_size" {
-  description = "Disk size in GB"
-  default     = 15
+  description = "List of disk sizes in GB for each VM"
+  type        = list(number)
+  default     = [15]
 }
 
 variable "disk_storage" {
