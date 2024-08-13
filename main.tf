@@ -48,7 +48,7 @@ resource "proxmox_vm_qemu" "vm" {
           discard    = var.discard
           emulatessd = var.emulatessd
           replicate  = var.replicate
-          size         = "${var.disk_size[count.index]}G"
+          size         = "${var.disk_size[count.index]}"
           storage    = var.disk_storage
         }
       }
