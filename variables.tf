@@ -103,6 +103,7 @@ variable "cloudinit_cdrom_storage" {
 variable "ciupgrade" {
   description = "Whether to upgrade packages"
   default     = false
+}
 
 variable "backup" {
   description = "Whether to enable backup"
