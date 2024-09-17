@@ -100,6 +100,10 @@ variable "cloudinit_cdrom_storage" {
   description = "Storage for the cloud-init CD-ROM"
 }
 
+variable "ciupgrade" {
+  description = "Whether to upgrade packages"
+  default     = false
+
 variable "backup" {
   description = "Whether to enable backup"
   default     = true
